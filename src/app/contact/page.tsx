@@ -19,7 +19,8 @@ export default function ContactPage() {
             <NavbarLink href="/about">About</NavbarLink>
             <NavbarLink href="/services">Services</NavbarLink>
             <NavbarLink href="/pricing">Pricing</NavbarLink>
-          </>
+            <NavbarLink href="/writing">Writing</NavbarLink>
+</>
         }
         logo={
           <NavbarLogo href="/">

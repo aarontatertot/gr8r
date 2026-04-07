@@ -1,15 +1,18 @@
-import { ButtonLink } from '@/components/elements/button'
+import { ButtonLink, PlainButtonLink } from '@/components/elements/button'
 import { Link } from '@/components/elements/link'
 import { Main } from '@/components/elements/main'
-import { ArrowNarrowRightIcon } from '@/components/icons/arrow-narrow-right-icon'
+import { ChevronIcon } from '@/components/icons/chevron-icon'
 import { CallToActionSimple } from '@/components/sections/call-to-action-simple'
+import { CallToActionSimpleCentered } from '@/components/sections/call-to-action-simple-centered'
 import { FooterCategory, FooterLink, FooterWithLinkCategories } from '@/components/sections/footer-with-link-categories'
-import { HeroSimpleLeftAligned } from '@/components/sections/hero-simple-left-aligned'
+import { HeroSimpleCentered } from '@/components/sections/hero-simple-centered'
 import {
   NavbarLink,
   NavbarLogo,
   NavbarWithLogoActionsAndCenteredLinks,
 } from '@/components/sections/navbar-with-logo-actions-and-centered-links'
+import { Stat, StatsThreeColumnWithDescription } from '@/components/sections/stats-three-column-with-description'
+import { TestimonialLargeQuote } from '@/components/sections/testimonial-with-large-quote'
 
 export default function AboutPage() {
   return (
@@ -21,6 +24,10 @@ export default function AboutPage() {
             <NavbarLink href="/about">About</NavbarLink>
             <NavbarLink href="/services">Services</NavbarLink>
             <NavbarLink href="/pricing">Pricing</NavbarLink>
+            <NavbarLink href="/writing">Writing</NavbarLink>
+            <NavbarLink href="/contact" className="sm:hidden">
+              Contact
+            </NavbarLink>
           </>
         }
         logo={
@@ -36,56 +43,101 @@ export default function AboutPage() {
       />
 
       <Main>
-        <HeroSimpleLeftAligned
+        {/* Hero */}
+        <HeroSimpleCentered
           id="hero"
-          eyebrow="About gr8r"
-          headline="Design leadership for the transition ahead."
+          headline="Built for design leaders who are serious about the AI transition."
           subheadline={
             <p>
-              gr8r is a consulting practice for design leaders navigating the AI transition. We work with VPs and
-              Directors of Design who are trying to understand what AI means for their teams, their craft, and their
-              organizations — and who want a thought partner who has been in the room.
+              gr8r is a consulting practice for VPs and Directors of Design navigating a moment when the nature of
+              design work — and design leadership — is fundamentally changing.
             </p>
           }
         />
 
+        {/* About Aaron */}
+        <StatsThreeColumnWithDescription
+          id="about-aaron"
+          heading="Aaron Tate"
+          description={
+            <>
+              <p>
+                Aaron is a UX Design Director with 20+ years building design organizations. He was the first UX hire
+                at CHG Healthcare, where he built a 21-person design team from the ground up.
+              </p>
+              <p>
+                He has led teams through platform shifts before — mobile, responsive, voice — and has spent the last
+                several years focused specifically on what AI means for the practice of UX and the role of design
+                leadership. He writes about where design is going at{' '}
+                <Link href="https://tateux.com/writing">tateux.com</Link>.
+              </p>
+            </>
+          }
+        >
+          <Stat stat="20+" text="Years leading design organizations through platform transitions." />
+          <Stat stat="21" text="Person design team built from the ground up at CHG Healthcare." />
+          <Stat stat="First" text="UX hire at CHG Healthcare." />
+        </StatsThreeColumnWithDescription>
+
+        {/* Why gr8r exists */}
         <CallToActionSimple
-          id="who"
-          eyebrow="Who we are"
-          headline="Aaron Tate"
+          id="why-gr8r"
+          eyebrow="Why gr8r exists"
+          headline="Most AI+design content is about tools. This is about what changes when AI takes over the execution layer."
           subheadline={
             <p>
-              Aaron is a UX Design Director with 20+ years building design organizations at companies large and small.
-              He has led teams through platform shifts before — mobile, responsive, voice — and has spent the last
-              several years focused on how AI changes the practice of UX and the role of design leadership.
-              <br />
-              <br />
-              He writes about where design is going at tateux.com. gr8r is his advisory practice.
+              When AI handles execution, the design challenges that remain are governance, trust, and oversight —
+              questions that no tool can answer. gr8r exists to help design leaders think through what changes, what
+              stays, and what they need to build differently.
             </p>
           }
           cta={
-            <Link href="https://tateux.com/writing">
-              Read the writing <ArrowNarrowRightIcon />
-            </Link>
+            <PlainButtonLink href="https://tateux.com/writing" target="_blank" rel="noopener noreferrer" size="lg">
+              Read the thinking at tateux.com <ChevronIcon />
+            </PlainButtonLink>
           }
         />
 
-        <CallToActionSimple
-          id="approach"
-          eyebrow="Our approach"
-          headline="We work on real problems, not frameworks."
+        {/* Testimonial */}
+        <TestimonialLargeQuote
+          id="testimonial"
+          quote={
+            <p>
+              Most AI content for designers is about tools. Aaron's work is about what changes when AI takes over the
+              execution layer — the governance, trust, and oversight challenges that no tool can solve.
+            </p>
+          }
+          img={
+            <img
+              src="https://assets.tailwindplus.com/avatars/10.webp?size=160"
+              alt=""
+              className="not-dark:bg-white/75 dark:bg-black/75"
+              width={160}
+              height={160}
+            />
+          }
+          name="VP of Design"
+          byline="Series C startup"
+        />
+
+        {/* CTA */}
+        <CallToActionSimpleCentered
+          id="call-to-action"
+          headline="Ready to start a conversation?"
           subheadline={
             <p>
-              gr8r is not a consultancy that arrives with a deck and leaves with a bill. We work alongside design
-              leaders — in sessions, async, or both — on the specific challenges they are facing. That might be how to
-              restructure a team, how to talk to a skeptical executive, or how to build an AI readiness practice that
-              actually sticks.
+              If you're navigating the AI transition and want a thought partner who has been in the room — let's talk.
             </p>
           }
           cta={
-            <ButtonLink href="/contact" size="lg">
-              Start a conversation
-            </ButtonLink>
+            <div className="flex items-center gap-4">
+              <ButtonLink href="/contact" size="lg">
+                Get in touch
+              </ButtonLink>
+              <PlainButtonLink href="https://tateux.com/writing" target="_blank" rel="noopener noreferrer" size="lg">
+                Read at tateux.com <ChevronIcon />
+              </PlainButtonLink>
+            </div>
           }
         />
       </Main>
@@ -96,6 +148,9 @@ export default function AboutPage() {
           <>
             <FooterCategory title="gr8r">
               <FooterLink href="/about">About</FooterLink>
+              <FooterLink href="/services">Services</FooterLink>
+              <FooterLink href="/pricing">Pricing</FooterLink>
+              <FooterLink href="/writing">Writing</FooterLink>
               <FooterLink href="/contact">Contact</FooterLink>
             </FooterCategory>
             <FooterCategory title="Connect">
@@ -103,7 +158,7 @@ export default function AboutPage() {
             </FooterCategory>
           </>
         }
-        fineprint="© 2025 gr8r. All rights reserved."
+        fineprint="© 2026 gr8r. All rights reserved."
       />
     </>
   )
