@@ -19,6 +19,8 @@ export default function AboutPage() {
         links={
           <>
             <NavbarLink href="/about">About</NavbarLink>
+            <NavbarLink href="/services">Services</NavbarLink>
+            <NavbarLink href="/pricing">Pricing</NavbarLink>
           </>
         }
         logo={
